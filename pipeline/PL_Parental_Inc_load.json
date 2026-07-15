@@ -1,0 +1,103 @@
+{
+	"name": "PL_Parental_Inc_load",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKP_GetWatermark_MetaData",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT\n    TableName,\n    WatermarkColumn,\n    LastLoadValue,\n    DestinationFolder,\n    IsActive,\n    LoadType\nFROM ADF_Watermark_Table\nWHERE IsActive = 'Y'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SqlServerTable_Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": "ADF_Watermark_Table"
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "FE_ProcessEachTable",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LKP_GetWatermark_MetaData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LKP_GetWatermark_MetaData').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Execute_Child_Pipeline",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_Child_Incremental_Load",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"TableName": {
+										"value": "@item().TableName",
+										"type": "Expression"
+									},
+									"WatermarkColumn": {
+										"value": "@item().WatermarkColumn",
+										"type": "Expression"
+									},
+									"LastLoadValue": {
+										"value": "@item().LastLoadValue",
+										"type": "Expression"
+									},
+									"DestinationFolder": {
+										"value": "@item().DestinationFolder",
+										"type": "Expression"
+									},
+									"LoadType": {
+										"value": "@item().LoadType",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"TestTable": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-07-13T11:58:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

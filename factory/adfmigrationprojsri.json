@@ -1,0 +1,15 @@
+{
+	"name": "adfmigrationprojsri",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "westus3",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1219ae51-487f-408f-8b61-6b8f7b71d3fd",
+		"tenantId": "9dc00e73-e38b-4c78-85e1-943570f9ecfa"
+	}
+}
