@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfmigrationprojsri"
+		},
+		"LS_AzureDataLakeStorage1_Migration_Sink_accountKey": {
+			"value": ""
+		},
+		"LS_SqlServer1_MigrationProject_password": {
+			"value": ""
+		},
+		"LS_AzureDataLakeStorage1_Migration_Sink_properties_typeProperties_url": {
+			"value": "https://adlsmigrationsqldata.dfs.core.windows.net/"
+		},
+		"LS_SqlServer1_MigrationProject_properties_typeProperties_server": {
+			"value": "DESKTOP-IPOINOL\\SRISQLSERVER"
+		},
+		"LS_SqlServer1_MigrationProject_properties_typeProperties_database": {
+			"value": "dbmigration"
+		},
+		"LS_SqlServer1_MigrationProject_properties_typeProperties_userName": {
+			"value": "srimigration"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
