@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfmigrationprojsri"
 		},
+		"LS_ADLS_DestinationSrc_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_DestinationSrc'"
+		},
+		"LS_ADLS_Reporting_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_Reporting'"
+		},
 		"LS_AzureDataLakeStorage1_Migration_Sink_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_AzureDataLakeStorage1_Migration_Sink'"
@@ -14,6 +22,14 @@
 		"LS_SqlServer1_MigrationProject_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SqlServer1_MigrationProject'"
+		},
+		"LS_ADLS_DestinationSrc_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsmigrationsqldata.dfs.core.windows.net/"
+		},
+		"LS_ADLS_Reporting_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsmigrationsqldata.dfs.core.windows.net/"
 		},
 		"LS_AzureDataLakeStorage1_Migration_Sink_properties_typeProperties_url": {
 			"type": "string",
@@ -58,11 +74,23 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_ADLS_DestinationSrc_accountKey": {
+						"value": "[parameters('LS_ADLS_DestinationSrc_accountKey')]"
+					},
+					"LS_ADLS_Reporting_accountKey": {
+						"value": "[parameters('LS_ADLS_Reporting_accountKey')]"
+					},
 					"LS_AzureDataLakeStorage1_Migration_Sink_accountKey": {
 						"value": "[parameters('LS_AzureDataLakeStorage1_Migration_Sink_accountKey')]"
 					},
 					"LS_SqlServer1_MigrationProject_password": {
 						"value": "[parameters('LS_SqlServer1_MigrationProject_password')]"
+					},
+					"LS_ADLS_DestinationSrc_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_DestinationSrc_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_Reporting_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_Reporting_properties_typeProperties_url')]"
 					},
 					"LS_AzureDataLakeStorage1_Migration_Sink_properties_typeProperties_url": {
 						"value": "[parameters('LS_AzureDataLakeStorage1_Migration_Sink_properties_typeProperties_url')]"

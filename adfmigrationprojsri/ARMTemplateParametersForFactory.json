@@ -5,11 +5,23 @@
 		"factoryName": {
 			"value": "adfmigrationprojsri"
 		},
+		"LS_ADLS_DestinationSrc_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_Reporting_accountKey": {
+			"value": ""
+		},
 		"LS_AzureDataLakeStorage1_Migration_Sink_accountKey": {
 			"value": ""
 		},
 		"LS_SqlServer1_MigrationProject_password": {
 			"value": ""
+		},
+		"LS_ADLS_DestinationSrc_properties_typeProperties_url": {
+			"value": "https://adlsmigrationsqldata.dfs.core.windows.net/"
+		},
+		"LS_ADLS_Reporting_properties_typeProperties_url": {
+			"value": "https://adlsmigrationsqldata.dfs.core.windows.net/"
 		},
 		"LS_AzureDataLakeStorage1_Migration_Sink_properties_typeProperties_url": {
 			"value": "https://adlsmigrationsqldata.dfs.core.windows.net/"
